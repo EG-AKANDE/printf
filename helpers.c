@@ -22,11 +22,12 @@ int _putchar(char c)
 
 int print_string(char *s)
 {
-	int len = 0; /* Initialize a counter for the number of characters written */
-	while (*s) /* Loop through each character in the string until reaching the null terminator */
+	int len = 0; /* Initialize a counter for the number of characters written*/
+
+	while (*s) /* Loop through each character in the string*/
 	{
-			len += write(1, s, 1); /* Write the character at the current position to standard output and increment the counter */
-			s++; /* Move to the next character in the string */
+		len += write(1, s, 1); /* Write the character at the current position*/
+		s++; /* Move to the next character in the string */
 	}
-	return len; /* Return the total number of characters written */
+	return (len); /* Return the total number of characters written */
 }
