@@ -75,3 +75,31 @@ int print_integer(int num)
 
 	return (len); /* Return the total number of characters printed */
 }
+
+/**
+ * print_binary - Converts int argument to binary
+ * @num: The the int to convert
+ *
+ * Return: On success len.
+*/
+
+int print_binary(unsigned int num)
+{
+	int len = 0;
+
+	/* Maximum number of bits for an unsigned int including null terminator */
+	char buffer[33];
+	int idx = 0;
+
+	/* Convert num to binary and store in buffer */
+	do {
+		buffer[idx++] = (num & 1) ? '1' : '0';
+		num >>= 1;
+	} while (num > 0);
+	/* Print the binary representation in reverse order */
+	while (idx > 0)
+	{
+		len += print_char(buffer[--idx]);
+	}
+	return (len);
+}
