@@ -15,7 +15,7 @@ int format_specifier(const char **format, va_list args)
 	{
 		char c = va_arg(args, int); /* Get the corresponding argument */
 
-		len += print_char(c); /* Call the function to print the character */
+		len += _putchar(c); /* Call the function to print the character */
 	}
 	else if (specifier == 's') /* If the specifier is for a string */
 	{
@@ -25,7 +25,7 @@ int format_specifier(const char **format, va_list args)
 	}
 	else if (specifier == '%') /* If the specifier is for a percent sign */
 	{
-		len += print_char('%'); /* Call the function to print the sign */
+		len += _putchar('%'); /* Call the function to print the sign */
 	}
 	else if (specifier == 'd' || specifier == 'i') /* If for dec or int */
 	{

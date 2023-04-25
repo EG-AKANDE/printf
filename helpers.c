@@ -99,7 +99,7 @@ int print_binary(unsigned int num)
 	/* Print the binary representation in reverse order */
 	while (idx > 0)
 	{
-		len += print_char(buffer[--idx]);
+		len += _putchar(buffer[--idx]);
 	}
 	return (len);
 }
