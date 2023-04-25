@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdarg.h>
+#include <stdio.h>
 
 /**
  * format_specifier - processes a single format specifier
