@@ -6,6 +6,7 @@
  * @args: the the va_list of args
  * Return: output length
  */
+
 int format_specifier(const char **format, va_list args)
 {
 	int len = 0; /* Initialize */
