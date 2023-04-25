@@ -24,13 +24,13 @@ while (*format)
 	{
 		format++;
 		/* Adding the length returned by handle_format_specifier to len */
-		len += handle_format_specifier(&format, args);
+		len += format_specifier(&format, args);
 	}
 	/* If the current character is not a format specifier */
 	else
 	{
 		/* Printing the character and adding 1 to len */
-		len += print_char(*format);
+		len += _putchar(*format);
 		/* Moving to the next character in the format string */
 		format++;
 	}
