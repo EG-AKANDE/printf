@@ -1,4 +1,4 @@
-#include "main.c"
+#include "main.h"
 /**
  * print_octal - Converts int argument to octal
  * @num: The the int to convert
@@ -8,6 +8,7 @@
 
 int print_octal(unsigned int num)
 {
+	int i;
 	int len = 0;
 	char buffer[20];/* Maximum number of digits for an unsigned int in octal*/
 	int idx = 0;
@@ -19,9 +20,9 @@ int print_octal(unsigned int num)
 		num /= 8;
 	} while (num > 0);
 	/* Print the digits in reverse order to match the original number */
-	for (int i = idx - 1; i >= 0; i--)
+	for (i = idx - 1; i >= 0; i--)
 	{
-		len += print_char(buffer[i]);
+		len += _putchar(buffer[i]);
 	}
 	return (len);
 }
@@ -36,6 +37,7 @@ int print_octal(unsigned int num)
 
 int print_hexadecimal(unsigned int num, char specifier)
 {
+	int i;
 	int len = 0;
 	char buffer[20];
 	int idx = 0;
@@ -61,7 +63,7 @@ int print_hexadecimal(unsigned int num, char specifier)
 		}
 		num /= 16;
 	} while (num > 0);/* Print the digits in reverse order to match */
-	for (int i = idx - 1; i >= 0; i--)
+	for (i = idx - 1; i >= 0; i--)
 	{
 		len += print_char(buffer[i]);
 	}
