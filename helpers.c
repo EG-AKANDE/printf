@@ -104,3 +104,29 @@ int print_binary(unsigned int num)
 	}
 	return (len);
 }
+
+/**
+ * print_unsigned_integer - converts it to a string in decimal format using
+ * @num: The the int to convert
+ *
+ * Return: On success len.
+*/
+
+int print_unsigned_integer(unsigned int num)
+{
+	int len = 0;
+	char buffer[20];
+	int idx = 0;
+
+	/* Convert num to string in decimal format */
+	do {
+		buffer[idx++] = '0' + num % 10;
+		num /= 10;
+	} while (num > 0);
+	/* Print the digits in reverse order to match the original number */
+	for (int i = idx - 1; i >= 0; i--)
+	{
+		len += _putchar(buffer[i]);
+	}
+	return (len);
+}
