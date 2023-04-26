@@ -1,4 +1,4 @@
-
+#include "main.c"
 /**
  * print_octal - Converts int argument to octal
  * @num: The the int to convert
