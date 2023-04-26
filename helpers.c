@@ -114,6 +114,7 @@ int print_binary(unsigned int num)
 
 int print_unsigned_integer(unsigned int num)
 {
+	int i;
 	int len = 0;
 	char buffer[20];
 	int idx = 0;
@@ -124,7 +125,7 @@ int print_unsigned_integer(unsigned int num)
 		num /= 10;
 	} while (num > 0);
 	/* Print the digits in reverse order to match the original number */
-	for (int i = idx - 1; i >= 0; i--)
+	for (i = idx - 1; i >= 0; i--)
 	{
 		len += _putchar(buffer[i]);
 	}
