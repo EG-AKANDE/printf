@@ -1,3 +1,4 @@
+#include "main.h"
 
 /**
  * print_octal - Converts int argument to octal
