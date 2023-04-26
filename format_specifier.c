@@ -63,7 +63,7 @@ int format_specifier1(const char **format, va_list args)
 	int len = 0;
 	char specifier = *(*format);
 
-	else if (specifier == 'o')
+	if (specifier == 'o')
 	{
 		unsigned int num = va_arg(args, unsigned int);
 

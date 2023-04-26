@@ -30,7 +30,7 @@ while (*format) /* Looping through format str until str end */
 
 	if (*format == '%') /* If fmt specifier percent sign, print percent */
 {
-	len += print_char('%'); /* sign and increment length counter */
+	len += _putchar('%'); /* sign and increment length counter */
 }
 	else if (*format == 'c' || *format == 's' || *format == 'd' ||
 	*format == 'i' || *format == 'u') /* uns int, handle */
@@ -43,13 +43,13 @@ while (*format) /* Looping through format str until str end */
 }
 	else
 {
-	len += print_char('%'); /* If invalid, print percent sign */
-	len += print_char(*format);
+	len += _putchar('%'); /* If invalid, print percent sign */
+	len += _putchar(*format);
 }
 }
 	else
 {
-	len += print_char(*format); /* If char not percent, print char */
+	len += _putchar(*format); /* If char not percent, print char */
 }
 
 	format++; /* Move fmtt pntr to next character */
