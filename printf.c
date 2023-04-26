@@ -9,46 +9,53 @@
  */
 
 /* Defining the function _printf and its parameters */
-int _printf(const char *format, ...)
+int _printf(const char *format, ...) /* Defining _printf and parameters */
 {
-	int len = 0;
-	va_list args;
-	
-	va_start(args, format);
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			format++;
-			if (*format == '\0')
-            {
-                break;
-            }
-            if (*format == '%')
-            {
-                len += print_char('%');
-            }
-            else if (*format == 'c' || *format == 's' || *format == 'd' || *format == 'i' || *format == 'u')
-            {
-                len += handle_format_specifier(&format, args);
-            }
-            else if (*format == 'o' || *format == 'x' || *format == 'X')
-            {
-                len += handle_format_specifier1(&format, args);
-            }
-            else
-            {
-                len += print_char('%');
-                len += print_char(*format);
-            }
-        }
-        else
-        {
-            len += print_char(*format);
-        }
-        format++;
-    }
+int len = 0; /* Initializing length variable */
 
-    va_end(args);
-    return len;
+va_list args; /* Declaring a variable of type va_list */
+
+va_start(args, format); /* Initializing the va_list variable for first arg */
+
+while (*format) /* Looping through format str until str end */
+{
+	if (*format == '%') /* If char is percent sign, handle specifier */
+{
+	format++; /* Move format pointer to next char */
+
+	if (*format == '\0')  /* If format specifier at end, exit loop */
+{
+	break;
+}
+
+	if (*format == '%') /* If fmt specifier percent sign, print percent */
+{
+	len += print_char('%'); /* sign and increment length counter */
+}
+	else if (*format == 'c' || *format == 's' || *format == 'd' ||
+	*format == 'i' || *format == 'u') /* uns int, handle */
+{
+	len += handle_format_specifier(&format, args);
+	}
+	else if (*format == 'o' || *format == 'x' || *format == 'X')
+{
+	len += handle_format_specifier1(&format, args);
+}
+	else
+{
+	len += print_char('%'); /* If invalid, print percent sign */
+	len += print_char(*format);
+}
+}
+	else
+{
+	len += print_char(*format); /* If char not percent, print char */
+}
+
+	format++; /* Move fmtt pntr to next character */
+}
+
+	va_end(args); /* Clean up the va_list variable */
+
+	return (len); /* Return the total length of the output */
 }
