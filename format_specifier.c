@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
-#include <stdio.h>
 
 /**
  * format_specifier - processes a single format specifier
@@ -42,7 +40,41 @@ int format_specifier(const char **format, va_list args)
 
 		len += print_binary(num); /* Call function to print binary */
 	}
+	else if (specifier == 'u')
+	{
+		unsigned int num = va_arg(args, unsigned int);
 
+		len += print_unsigned_integer(num);
+	}
 	(*format)++; /* Move the format pointer to the next char in input str */
 	return (len); /* Return the total length of the printed output */
+}
+
+/**
+ * format_specifier1 - processes a single format specifier
+ * @format: pntr to present position
+ * @args: the the va_list of args
+ * Return: output length
+ */
+
+
+int format_specifier1(const char **format, va_list args)
+{
+	int len = 0;
+	char specifier = *(*format);
+
+	else if (specifier == 'o')
+	{
+		unsigned int num = va_arg(args, unsigned int);
+
+		len += print_octal(num);
+	}
+	else if (specifier == 'x' || specifier == 'X')
+	{
+		unsigned int num = va_arg(args, unsigned int);
+
+		len += print_hexadecimal(num, specifier);
+	}
+	(*format)++;
+	return (len);
 }

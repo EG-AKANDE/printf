@@ -11,35 +11,44 @@
 /* Defining the function _printf and its parameters */
 int _printf(const char *format, ...)
 {
-/* Initializing variables */
-int len = 0;
-va_list args;
-
-/* Starting the list of arguments */
-va_start(args, format);
-
-/* Looping through the format string */
-while (*format)
-{
-	/* Checking if the current character is a format specifier */
-	if (*format == '%')
+	int len = 0;
+	va_list args;
+	
+	va_start(args, format);
+	while (*format)
 	{
-		format++;
-		/* Adding the length returned by handle_format_specifier to len */
-		len += format_specifier(&format, args);
-	}
-	/* If the current character is not a format specifier */
-	else
-	{
-		/* Printing the character and adding 1 to len */
-		len += _putchar(*format);
-		/* Moving to the next character in the format string */
-		format++;
-	}
-}
+		if (*format == '%')
+		{
+			format++;
+			if (*format == '\0')
+            {
+                break;
+            }
+            if (*format == '%')
+            {
+                len += print_char('%');
+            }
+            else if (*format == 'c' || *format == 's' || *format == 'd' || *format == 'i' || *format == 'u')
+            {
+                len += handle_format_specifier(&format, args);
+            }
+            else if (*format == 'o' || *format == 'x' || *format == 'X')
+            {
+                len += handle_format_specifier1(&format, args);
+            }
+            else
+            {
+                len += print_char('%');
+                len += print_char(*format);
+            }
+        }
+        else
+        {
+            len += print_char(*format);
+        }
+        format++;
+    }
 
-/* Ending the list of arguments */
-va_end(args);
-/* Returning the number of characters printed */
-return (len);
+    va_end(args);
+    return len;
 }
